@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:colorBackground">
+
+    <!-- ❌ Close -->
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/outline_close_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="12dp"
+        app:tint="?colorOnSurface" />
+
+    <!-- Progress -->
+    <TextView
+        android:id="@+id/tvProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/progress_deck"
+        android:backgroundTint="@color/mf_purple"
+        android:padding="10dp"
+        android:text="0/3"
+        android:textColor="?colorOnSurface"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Menu -->
+    <ImageButton
+        android:id="@+id/btnMenu"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_more_vert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="?colorOnSurface" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/layoutActions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProgress">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:minHeight="0dp"
+                app:cardBackgroundColor="?colorSurface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp">
+
+                <WebView
+                    android:id="@+id/cardWebView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Quiz -->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/quizContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/quizText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Choisissez la/les bonne(s) réponse(s)"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/quizA"
+                    style="@style/QuizButton"
+                    android:text="Réponse 1"
+                    tools:layout_editor_absoluteX="106dp"
+                    tools:layout_editor_absoluteY="48dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/quizB"
+                    style="@style/QuizButton"
+                    android:text="Réponse 2" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/quizC"
+                    style="@style/QuizButton"
+                    android:text="Réponse 3" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/quizD"
+                    style="@style/QuizButton"
+                    android:text="Réponse 4" />
+
+                <androidx.constraintlayout.helper.widget.Flow
+                    android:id="@+id/flowButtons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:constraint_referenced_ids="quizA,quizB,quizC,quizD"
+                    app:flow_horizontalGap="8dp"
+                    app:flow_maxElementsWrap="2"
+                    app:flow_verticalGap="8dp"
+                    app:flow_wrapMode="aligned"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quizText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutActions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutValidate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/validateBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Afficher la réponse"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/mf_background"
+            android:elevation="8dp"
+            android:padding="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAgain"
+                style="@style/MFReviewButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:lineSpacingExtra="0dp"
+                android:lines="2"
+                android:maxLines="2"
+                android:paddingHorizontal="0dp"
+                android:singleLine="false"
+                android:text="Encore\n1m"
+                android:textAlignment="center"
+                app:backgroundTint="@color/mf_red_soft" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnHard"
+                style="@style/MFReviewButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:lineSpacingExtra="0dp"
+                android:lines="2"
+                android:maxLines="2"
+                android:paddingHorizontal="0dp"
+                android:singleLine="false"
+                android:text="Difficile\n15m"
+                android:textAlignment="center"
+                app:backgroundTint="@color/mf_orange_soft" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGood"
+                style="@style/MFReviewButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:lineSpacingExtra="0dp"
+                android:lines="2"
+                android:maxLines="2"
+                android:paddingHorizontal="0dp"
+                android:singleLine="false"
+                android:text="Bien\n1j"
+                android:textAlignment="center"
+                app:backgroundTint="@color/mf_green_soft" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnEasy"
+                style="@style/MFReviewButton"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:gravity="center"
+                android:lineSpacingExtra="0dp"
+                android:lines="2"
+                android:maxLines="2"
+                android:paddingHorizontal="0dp"
+                android:singleLine="false"
+                android:text="Facile\n4j"
+                android:textAlignment="center"
+                app:backgroundTint="@color/mf_blue_soft" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/flow"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="btnAgain,btnHard,btnGood,btnEasy"
+                app:flow_horizontalBias="0"
+                app:flow_horizontalGap="4dp"
+                app:flow_horizontalStyle="spread"
+                app:flow_maxElementsWrap="4"
+                app:flow_wrapMode="none"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
