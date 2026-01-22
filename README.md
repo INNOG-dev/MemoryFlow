@@ -19,3 +19,20 @@ Lancez des sessions de révision, testez votre capacité à restituer l’inform
 
 Un paquet permet d'organiser vos fiches de révision par thème
 
+![Création d'un paquet](images/1.png)
+
+### 2/Ajout d'une fiche de révision au paquet
+
+Créez vos fiches de révision selon vos besoins.
+Envie de passer au niveau supérieur ? Activez le mode quiz et mettez vos connaissances à l’épreuve
+
+![Création d'une fiche de révision](images/2.png)
+
+### 3/Session de révision
+
+C’est ici que MemoryFlow prend tout son sens.
+Challengez votre mémoire en essayant de restituer vos connaissances.
+En fonction de la difficulté rencontrée, vous indiquez à l’algorithme quand planifier votre prochaine session de révision.
+
+![Session de révision](images/3.png)
+![Niveau de difficulté à ressortir la connaissance](images/4.png)
