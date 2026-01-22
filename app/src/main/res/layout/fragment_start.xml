@@ -1,14 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.theme.StartFragment">
+    android:background="@drawable/background_gradiant"
+    android:padding="24dp"
+    android:fillViewport="true">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-</FrameLayout>
+        <!-- Titre -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MemoryFlow"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:paddingTop="24dp"
+            android:shadowColor="#80404040"
+            android:shadowDx="0"
+            android:shadowDy="4"
+            android:shadowRadius="12"/>
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="8dp"
+            android:text="Organise, mémorise et transforme ta vie."
+            android:textColor="#F3F3F3"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Slider -->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:clipToPadding="false"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp" />
+
+        <!-- Dots indicators -->
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center"/>
+
+        <!-- Bouton commencer -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startButton"
+            style="?attr/materialButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="40dp"
+            android:text="Commencer"
+            android:textColor="#5A4BE1"
+            android:textSize="20sp"
+            app:backgroundTint="@android:color/white"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

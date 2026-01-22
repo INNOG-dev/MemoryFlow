@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="mf_purple">#9F85FF</color>
+    <color name="mf_purple_soft">#2A2438</color>
+
+    <!-- 🌑 Dark backgrounds -->
+    <color name="mf_background">#121212</color>
+    <color name="mf_surface">#1C1C1E</color>
+    <color name="mf_card">#1F1F24</color>
+
+    <!-- 📝 Text -->
+    <color name="mf_text_primary">#F5F5F7</color>
+    <color name="mf_text_secondary">#B0B0B5</color>
+
+    <!-- ➖ Outline -->
+    <color name="mf_outline">#2C2C31</color>
+
 </resources>

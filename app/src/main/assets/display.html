@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Quill CSS (obligatoire pour le rendu) -->
+    <link rel="stylesheet" href="quill.snow.css">
+
+    <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+          background: transparent;
+          font-family: system-ui, -apple-system, sans-serif;
+          color: #111;
+          overflow: visible; /* scroll géré par la WebView */
+        }
+
+        /* Container Quill sans toolbar */
+        .ql-container {
+          border: none;
+        }
+
+        .ql-editor {
+          padding: 16px;
+          font-size: 16px;
+          line-height: 1.6;
+          background: transparent; /* 👈 IMPORTANT */
+        }
+
+        /* Images */
+        .ql-editor img {
+          max-width: 100%;
+          border-radius: 8px;
+          margin: 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- CONTENU UNIQUEMENT -->
+<div id="content" class="ql-editor"></div>
+
+<script>
+    /* =========================
+       ANDROID BRIDGE
+       ========================= */
+
+    function setContent(html) {
+        document.getElementById("content").innerHTML = html || "";
+    }
+</script>
+
+</body>
+</html>
