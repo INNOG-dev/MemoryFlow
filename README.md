@@ -8,12 +8,12 @@ C'est une méthode d'apprentissage consistant à répéter des connaissances sur
 
 Courbe de l'oubli
 
-![Courbe de l'oubli](https://myoctocat.com/assets/images/base-octocat.svg)
+![Courbe de l'oubli](images/courbe.png)
 
 ## Comment cette méthode de mémorisation est intégré sur MemoryFlow ?
 
 MemoryFlow vous permet de créer facilement des fiches de révision au format question-réponse.
-Lancez des sessions de révision, testez votre capacité à restituer l’information et définissez un délai avant qu’une fiche ne redevienne disponible à l’étude.
+Lancez des sessions de révision, testez votre capacité à restituer l’information et définissez un délai avant qu’une fiche ne redevienne disponible à l’étude selon votre ressenti.
 
 ### 1/Création d'un paquet
 
