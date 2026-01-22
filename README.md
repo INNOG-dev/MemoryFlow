@@ -1,7 +1,4 @@
 # MemoryFlow
-<<<<<<< HEAD
-Application favorisant la mémorisation de connaissances à long terme basé sur la méthode de la répétion espacée
-=======
 
 **MemoryFlow** est une application android pour mémoriser à long terme ses connaissances basé sur l'apprentissage espacée 
 
