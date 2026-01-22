@@ -8,7 +8,7 @@ C'est une méthode d'apprentissage consistant à répéter des connaissances sur
 
 Courbe de l'oubli
 
-![Courbe de l'oubli](images/courbe.png)
+![Courbe de l'oubli](images/courbe_oubli.png)
 
 ## Comment cette méthode de mémorisation est intégré sur MemoryFlow ?
 
