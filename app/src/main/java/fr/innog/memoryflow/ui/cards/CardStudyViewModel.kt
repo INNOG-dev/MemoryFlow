@@ -55,6 +55,7 @@ class CardStudyViewModel @Inject constructor(val repository: CardRepository) : V
     fun startQuiz()
     {
         quizState.value = QuizState.Idle
+        lastSelectedAnswer = null
         _selectedAnswers.update { current -> emptyList() }
     }
 
@@ -136,7 +137,6 @@ class CardStudyViewModel @Inject constructor(val repository: CardRepository) : V
             val review = currentCard.cardReviewData
 
             val prev = review.timeInterval
-            Log.d("TEST", "$prev")
             when (difficulty) {
                 CardDifficulty.AGAIN -> {
                     review.easeFactor -= 0.5f
@@ -179,7 +179,6 @@ class CardStudyViewModel @Inject constructor(val repository: CardRepository) : V
                 }
             }
             review.nextReviewDate = System.currentTimeMillis() + review.timeInterval * 1000L
-
         }
     }
 
@@ -194,28 +193,28 @@ class CardStudyViewModel @Inject constructor(val repository: CardRepository) : V
             CardDifficulty.AGAIN -> {
                 maxOf(
                     CardDifficulty.AGAIN.initialInterval,
-                    (currentInterval * 0.5f).toLong()
+                    (currentInterval.toDouble() * 0.5).toLong()
                 )
             }
 
             CardDifficulty.HARD -> {
                 maxOf(
                     CardDifficulty.HARD.initialInterval,
-                    (currentInterval * 0.85f).toLong()
+                    (currentInterval.toDouble() * 0.85).toLong()
                 )
             }
 
             CardDifficulty.GOOD -> {
                 maxOf(
                     CardDifficulty.GOOD.initialInterval,
-                    (currentInterval * easeFactor).toLong()
+                    (currentInterval.toDouble() * easeFactor).toLong()
                 )
             }
 
             CardDifficulty.EASY -> {
                 maxOf(
                     CardDifficulty.EASY.initialInterval,
-                    (currentInterval * easeFactor * 1.3f).toLong()
+                    (currentInterval.toDouble() * easeFactor * 1.3).toLong()
                 )
             }
         }

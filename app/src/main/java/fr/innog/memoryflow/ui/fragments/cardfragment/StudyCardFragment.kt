@@ -2,6 +2,7 @@ package fr.innog.memoryflow.ui.fragments.cardfragment
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -91,6 +92,8 @@ class StudyCardFragment : Fragment() {
             }
         }
 
+        observeQuizEvents()
+
         binding.btnAgain.setOnClickListener { view ->
             viewModel.onApplyIntervalTime(CardDifficulty.AGAIN)
         }
@@ -116,28 +119,31 @@ class StudyCardFragment : Fragment() {
         _binding = null
     }
 
-    fun formatInterval(seconds: Long) : String
-    {
-        if(seconds <= 0) return "0s"
+    fun formatInterval(seconds: Long): String {
+        if (seconds <= 0) return "0s"
 
-        val mins = seconds / 60
-        val days = seconds / (60*60*24)
-        val months = days / 30
+        return when {
+            seconds < 60 ->
+                "${seconds}s"
 
-        return when
-        {
-            mins < 60 -> "${mins}m"
-            days < 30 -> "${days}j"
-            else -> "${months}mois"
+            seconds < 60 * 60 ->
+                "${seconds / 60}m"
+
+            seconds < 60 * 60 * 24 ->
+                "${seconds / (60 * 60)}h"
+
+            seconds < 60 * 60 * 24 * 30 ->
+                "${seconds / (60 * 60 * 24)}j"
+
+            else ->
+                "${seconds / (60 * 60 * 24 * 30)}mois"
         }
     }
 
     fun setupCardInterval()
     {
-        binding.btnAgain.text = "Encore\n${formatInterval(viewModel.getIntervalPreview(
-            CardDifficulty.AGAIN))}"
-        binding.btnHard.text = "Difficile\n${formatInterval(viewModel.getIntervalPreview(
-            CardDifficulty.HARD))}"
+        binding.btnAgain.text = "Encore\n${formatInterval(viewModel.getIntervalPreview(CardDifficulty.AGAIN))}"
+        binding.btnHard.text = "Difficile\n${formatInterval(viewModel.getIntervalPreview(CardDifficulty.HARD))}"
         binding.btnGood.text = "Bien\n${formatInterval(viewModel.getIntervalPreview(CardDifficulty.GOOD))}"
         binding.btnEasy.text = "Facile\n${formatInterval(viewModel.getIntervalPreview(CardDifficulty.EASY))}"
     }
@@ -230,9 +236,8 @@ class StudyCardFragment : Fragment() {
                 binding.quizText.text = "Choisissez les bonnes réponses"
             }
 
-            observeQuizEvents()
-
             buttons.forEachIndexed { index, button ->
+                button.setBackgroundColor(resources.getColor(R.color.mf_purple))
                 if(!answers[index].value.isEmpty())
                 {
                     button.text = answers[index].value
@@ -250,7 +255,6 @@ class StudyCardFragment : Fragment() {
 
         updateCardSize()
     }
-
 
     fun observeQuizEvents()
     {
@@ -305,7 +309,7 @@ class StudyCardFragment : Fragment() {
 
     fun setQuizButtonState(btn : MaterialButton, state : QuizState)
     {
-        btn.setBackgroundColor(if(state == QuizState.Correct) Color.GREEN else Color.RED)
+        btn.setBackgroundColor(if(state == QuizState.Correct) Color.GREEN else if(state == QuizState.Wrong) Color.RED else resources.getColor(R.color.mf_purple))
     }
 
     fun getQuizButtons() : List<MaterialButton>
